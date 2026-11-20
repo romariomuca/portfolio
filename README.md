@@ -5,3 +5,4 @@ Portfoli personalizzati che invio per le candidature. Ogni cartella è un proget
 | Cartella | Progetto Vercel | Per chi |
 |---|---|---|
 | `eyephone/` | portfolio-iphone | Özge Özcan, UI Design freelance 2027 |
+| `product-designer/` | portfolio-product-designer | Portfolio professionale |
