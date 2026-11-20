@@ -223,8 +223,8 @@
   .mi{font-style:normal;font-family:var(--mono);font-size:8px;letter-spacing:.14em;color:#6E6A63;margin-top:4px}
   .mrow b{font-weight:500;color:var(--txt);background:#1D1D1D;border-radius:99px;padding:4px 7px;font-size:11px;white-space:nowrap;letter-spacing:-.01em}
   .mrow b.hl{background:var(--acc);color:#111}
-  .ipoint{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;padding-top:14px}
-  .ipoint button{display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--txt)}
+  .ipoint{margin-top:auto;display:flex;justify-content:space-between;padding:14px 0 22px}
+  .ipoint button{width:44%;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--txt)}
   .ipoint span{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
   .ipoint em{font-style:normal;font-size:30px;line-height:1;color:var(--acc);animation:bob 1.4s ease-in-out infinite}
   .ipoint button:last-child em{animation-delay:.2s}
@@ -538,7 +538,7 @@ function render(){
       <div class="meth"><span class="ml">HOW I WORKED</span>
         <i class="mi">01 ANALYSIS</i><div class="mrow"><b>Heuristics</b>→<b>User tests</b>→<b>Insights</b>→<b class="hl">Brief</b></div>
         <i class="mi">02 REDESIGN</i><div class="mrow"><b>Card sorting</b>→<b>Tree testing</b>→<b>Wireframes</b></div>
-        <i class="mi">03 OUTPUT</i><div class="mrow"><b class="hl">Final prototype</b>↘<b>try it below</b></div></div>
+        <i class="mi">03 OUTPUT</i><div class="mrow"><b class="hl">Final prototype</b></div></div>
       <div class="ipoint"><button data-open="old"><span>Old version</span><em>↓</em></button><button data-open="new"><span>New version</span><em>↓</em></button></div></div>`;
     hints('','');
   }else if(state==='pin'){
