@@ -221,7 +221,7 @@
   .ml{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--acc);margin-bottom:2px}
   .mrow{display:flex;flex-wrap:nowrap;align-items:center;gap:4px;font-size:11px;color:#6E6A63}
   .mi{font-style:normal;font-family:var(--mono);font-size:8px;letter-spacing:.14em;color:#6E6A63;margin-top:4px}
-  .mrow b{font-weight:500;color:var(--txt);background:#1D1D1D;border-radius:99px;padding:4px 7px;font-size:11px;white-space:nowrap;letter-spacing:-.01em}
+  .mrow b{flex:1;text-align:center;font-weight:500;color:var(--txt);background:#1D1D1D;border-radius:99px;padding:4px 7px;font-size:11px;white-space:nowrap;letter-spacing:-.01em}
   .mrow b.hl{background:var(--acc);color:#111}
   .ipoint{margin-top:auto;display:flex;justify-content:space-between;padding:14px 0 22px}
   .ipoint button{width:44%;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--txt)}
@@ -539,7 +539,7 @@ function render(){
         <i class="mi">01 ANALYSIS</i><div class="mrow"><b>Heuristics</b>→<b>User tests</b>→<b>Insights</b>→<b class="hl">Brief</b></div>
         <i class="mi">02 REDESIGN</i><div class="mrow"><b>Card sorting</b>→<b>Tree testing</b>→<b>Wireframes</b></div>
         <i class="mi">03 OUTPUT</i><div class="mrow"><b class="hl">Final prototype</b></div></div>
-      <div class="ipoint"><button data-open="old"><span>Old version</span><em>↓</em></button><button data-open="new"><span>New version</span><em>↓</em></button></div></div>`;
+      <div class="ipoint"><button data-open="old"><span>Old version</span><em>↓</em></button><button data-open="new"><span>Redesign</span><em>↓</em></button></div></div>`;
     hints('','');
   }else if(state==='pin'){
     const dots=[0,1,2,3].map(i=>`<i class="${i<pinBuf.length?'on':''}"></i>`).join('');
@@ -624,7 +624,7 @@ function openApp(v){
   document.querySelectorAll('.ver').forEach(b=>b.classList.toggle('on',b.dataset.k===v));
   document.querySelector('.scr').classList.add('app');
   if(state!=='app'){stack=[];state='app'}
-  eyeTalk(v==='old'?'OLD VERSION':'NEW VERSION');
+  eyeTalk(v==='old'?'OLD VERSION':'REDESIGN');
 }
 let talkT;function eyeTalk(s){const e=$('eyeport');$('eptxt').textContent=s;e.classList.add('talk');clearTimeout(talkT);talkT=setTimeout(()=>e.classList.remove('talk'),1500)}
 function closeApp(){document.querySelector('.scr').classList.remove('app');document.querySelectorAll('.ver').forEach(b=>b.classList.remove('on'))}
@@ -672,7 +672,7 @@ function key(k,el){
 document.querySelectorAll('[data-k]').forEach(b=>b.addEventListener('pointerdown',e=>{e.stopPropagation();e.preventDefault();key(b.dataset.k,b)}));
 
 /* keycaps */
-$('keys').innerHTML=`<button class="key fn ver" data-k="old" aria-label="Old version"><i class="ledk"></i><svg viewBox="0 0 24 24"><path d="M12 5a7 7 0 1 0 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 8v4l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 4v4h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><small>OLD VERSION</small></button><button class="key fn rst" data-k="restart" aria-label="Restart"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 1 0 2.1-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M5 3.5V8h4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="key fn ver" data-k="new" aria-label="Redesign"><i class="ledk"></i><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z" fill="currentColor"/></svg><small>NEW VERSION</small></button>`;
+$('keys').innerHTML=`<button class="key fn ver" data-k="old" aria-label="Old version"><i class="ledk"></i><svg viewBox="0 0 24 24"><path d="M12 5a7 7 0 1 0 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 8v4l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 4v4h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><small>OLD VERSION</small></button><button class="key fn rst" data-k="restart" aria-label="Restart"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 1 0 2.1-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M5 3.5V8h4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="key fn ver" data-k="new" aria-label="Redesign"><i class="ledk"></i><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z" fill="currentColor"/></svg><small>REDESIGN</small></button>`;
 $('keys').querySelectorAll('[data-k]').forEach(b=>b.addEventListener('pointerdown',e=>{e.stopPropagation();e.preventDefault();key(b.dataset.k,b)}));
 
 view.addEventListener('click',e=>{
