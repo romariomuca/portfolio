@@ -212,20 +212,23 @@
   .pk.pkc{background:none;font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;line-height:1.3;color:#2FB86B}
   .pk.pkt{background:none;font-size:20px;color:#8A867E}
   .phint{font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;color:#6E6A63;text-align:center}
-  .intro{padding:26px 22px 30px!important;display:flex;flex-direction:column;gap:12px}
+  .intro{padding:22px 20px 12px!important;display:flex;flex-direction:column;gap:12px}
   .ihi{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--acc)}
-  .intro h2{font-size:27px;font-weight:600;letter-spacing:-.045em;line-height:1.02;margin-top:4px}
-  .intro p{font-size:13.5px;line-height:1.36;color:#C9C5BD}
+  .intro h2{font-size:25px;font-weight:600;letter-spacing:-.045em;line-height:1.02;margin-top:4px}
+  .intro p{font-size:12.8px;line-height:1.36;color:#C9C5BD}
   .intro p b{color:var(--txt);font-weight:600}
-  .ibox{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:10px}
-  .ib{height:132px;border-radius:16px;background:#1D1D1D;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;padding:14px;text-align:left;color:var(--txt);transition:transform .1s,background .2s}
-  .ib:active{transform:scale(.97)}
-  .ib:hover{background:#262626}
-  .ib span{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:#8A867E}
-  .ib b{font-size:22px;font-weight:600;letter-spacing:-.04em;line-height:1}
-  .ib small{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;color:#8A867E;text-transform:uppercase}
-  .ib.new{background:var(--acc);color:#111}
-  .ib.new span,.ib.new small{color:rgba(0,0,0,.6)}
+  .meth{margin-top:6px;padding:12px 0 0;border-top:1px solid #262626;display:flex;flex-direction:column;gap:4px}
+  .ml{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--acc);margin-bottom:2px}
+  .mrow{display:flex;flex-wrap:nowrap;align-items:center;gap:4px;font-size:11px;color:#6E6A63}
+  .mi{font-style:normal;font-family:var(--mono);font-size:8px;letter-spacing:.14em;color:#6E6A63;margin-top:4px}
+  .mrow b{font-weight:500;color:var(--txt);background:#1D1D1D;border-radius:99px;padding:4px 7px;font-size:11px;white-space:nowrap;letter-spacing:-.01em}
+  .mrow b.hl{background:var(--acc);color:#111}
+  .ipoint{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;padding-top:14px}
+  .ipoint button{display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--txt)}
+  .ipoint span{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .ipoint em{font-style:normal;font-size:30px;line-height:1;color:var(--acc);animation:bob 1.4s ease-in-out infinite}
+  .ipoint button:last-child em{animation-delay:.2s}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
   .why{padding:0 14px 20px}
   .req{border-top:1px solid #262626;padding:10px 0 12px}
   .req .q{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--acc);display:flex;justify-content:space-between;text-transform:uppercase}
@@ -532,7 +535,11 @@ function render(){
       <h2>You’re looking for a UI designer. Here’s an EyePhone.</h2>
       <p>I’m Romario, a product designer in Milan. Your list is how I already work: <b>brands translated into UI</b>, <b>apps that live native and web</b>, Material components, WCAG basics, HTML/CSS and files that are <b>Claude Code ready</b>.</p>
       <p>With this EyePhone I want to show you one project: the redesign of <b>Riding the Rainbow</b>, an app for a non-profit association in Luxembourg.</p>
-      <div class="ibox"><button class="ib" data-open="old"><span>01</span><b>Old<br>version</b><small>Where it started</small></button><button class="ib new" data-open="new"><span>02</span><b>New<br>version</b><small>My redesign →</small></button></div></div>`;
+      <div class="meth"><span class="ml">HOW I WORKED</span>
+        <i class="mi">01 ANALYSIS</i><div class="mrow"><b>Heuristics</b>→<b>User tests</b>→<b>Insights</b>→<b class="hl">Brief</b></div>
+        <i class="mi">02 REDESIGN</i><div class="mrow"><b>Card sorting</b>→<b>Tree testing</b>→<b>Wireframes</b></div>
+        <i class="mi">03 OUTPUT</i><div class="mrow"><b class="hl">Final prototype</b>↘<b>try it below</b></div></div>
+      <div class="ipoint"><button data-open="old"><span>Old version</span><em>↓</em></button><button data-open="new"><span>New version</span><em>↓</em></button></div></div>`;
     hints('','');
   }else if(state==='pin'){
     const dots=[0,1,2,3].map(i=>`<i class="${i<pinBuf.length?'on':''}"></i>`).join('');
