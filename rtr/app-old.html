@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Riding the Rainbow · Old version</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#ECECE8;font-family:Poppins,system-ui,sans-serif}
+.root{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:32px 16px}
+.dev{width:390px;height:844px;flex:none;border-radius:56px;background:#fff;padding:10px;box-shadow:0 40px 80px -40px rgba(20,20,20,.35),0 0 0 1px rgba(20,20,20,.06)}
+.scr{position:relative;width:100%;height:100%;border-radius:46px;overflow:hidden;background:#FBF7FC}
+.view{position:absolute;inset:0;display:none}
+.view.on{display:block}
+.view img{display:block;width:370px;height:auto;user-select:none;-webkit-user-drag:none}
+.top{position:absolute;left:0;top:0;width:370px;height:57px;z-index:3;background:url(old/top.webp) 0 0/370px auto}
+.scroll{position:absolute;left:0;right:0;top:57px;bottom:121px;overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
+.scroll::-webkit-scrollbar{display:none}
+.scroll .crop{margin-top:-57px}
+.nav{position:absolute;left:0;bottom:0;width:370px;height:121px;z-index:3}
+.nav img{position:absolute;inset:0}
+.hs{position:absolute;z-index:4;border:0;padding:0;background:transparent;cursor:pointer;border-radius:14px}
+.flash .hs{background:rgba(84,160,255,.28);box-shadow:inset 0 0 0 2px rgba(84,160,255,.9);transition:background .1s}
+.hs:focus-visible{outline:2px solid #141414;outline-offset:2px}
+.restart{background:none;border:0;font:500 13px Poppins,system-ui,sans-serif;color:#5E5E5A;cursor:pointer;text-decoration:underline}
+</style>
+<script>if(window.self!==window.top&&window.parent.document.getElementById("appf"))document.write('<link rel="stylesheet" href="frame-fix.css">')</script></head>
+<body>
+<div class="root">
+ <div class="dev"><div class="scr" id="scr">
+
+  <section class="view" id="v-onb">
+   <img src="old/onboarding.webp" alt="Onboarding: choose who you are" style="width:370px;height:792px;object-fit:cover">
+   <button class="hs" data-go="home" aria-label="Start" style="left:22px;top:557px;width:326px;height:50px"></button>
+  </section>
+
+  <section class="view" id="v-home">
+   <div class="top"></div>
+   <div class="scroll"><div style="position:relative">
+    <img src="old/home.webp" alt="Home">
+    <button class="hs" data-go="map" aria-label="Open map" style="left:11px;top:846px;width:348px;height:170px"></button>
+    <button class="hs" data-go="points" aria-label="Rainbow points" style="left:12px;top:1373px;width:170px;height:50px"></button>
+   </div></div>
+   <div class="nav"><img src="old/nav-home.webp" alt=""></div>
+  </section>
+
+  <section class="view" id="v-notif">
+   <div class="top"></div>
+   <div class="scroll"><div class="crop" style="position:relative">
+    <img src="old/notif.webp" alt="Notifications">
+    <button class="hs" data-go="feed" aria-label="News feed" style="left:185px;top:13px;width:178px;height:44px"></button>
+   </div></div>
+   <div class="nav"><img src="old/nav-notif.webp" alt=""></div>
+  </section>
+
+  <section class="view" id="v-feed">
+   <div class="top"></div>
+   <div class="scroll"><div class="crop" style="position:relative">
+    <img src="old/feed.webp" alt="News feed loading">
+    <button class="hs" data-go="notif" aria-label="Notifications" style="left:6px;top:13px;width:178px;height:44px"></button>
+   </div></div>
+   <div class="nav"><img src="old/nav-notif.webp" alt=""></div>
+  </section>
+
+  <section class="view" id="v-chat">
+   <div class="top"></div>
+   <div class="scroll"><div class="crop"><img src="old/chat.webp" alt="Chat messages"></div></div>
+   <div class="nav"><img src="old/nav-chat.webp" alt=""></div>
+  </section>
+
+  <section class="view" id="v-profile">
+   <div class="top"></div>
+   <div class="scroll"><div class="crop" style="position:relative">
+    <img src="old/profile.webp" alt="Profile">
+    <button class="hs" data-go="onb" aria-label="Log out" style="left:19px;top:1144px;width:332px;height:54px"></button>
+   </div></div>
+   <div class="nav"><img src="old/nav-profile.webp" alt=""></div>
+  </section>
+
+  <section class="view" id="v-points">
+   <img src="old/points.webp" alt="Rainbow points">
+   <button class="hs" data-go="home" aria-label="Back" style="left:17px;top:67px;width:38px;height:38px;border-radius:50%"></button>
+   <button class="hs" data-go="ranking" aria-label="Leaderboard" style="left:203px;top:209px;width:120px;height:29px"></button>
+  </section>
+
+  <section class="view" id="v-ranking">
+   <img src="old/ranking.webp" alt="Leaderboard">
+   <button class="hs" data-go="points" aria-label="Back" style="left:8px;top:82px;width:38px;height:38px;border-radius:50%"></button>
+  </section>
+
+  <section class="view" id="v-map">
+   <img src="old/map.webp" alt="Map">
+   <button class="hs" data-go="home" aria-label="Back" style="left:23px;top:102px;width:38px;height:38px;border-radius:50%"></button>
+  </section>
+
+  <div id="navhs">
+   <button class="hs" data-go="home" aria-label="Home" style="left:22px;top:730px;width:48px;height:48px"></button>
+   <button class="hs" data-go="notif" aria-label="Notifications" style="left:90px;top:730px;width:48px;height:48px"></button>
+   <button class="hs" data-go="map" aria-label="Search on the map" style="left:157px;top:707px;width:56px;height:56px;border-radius:50%"></button>
+   <button class="hs" data-go="chat" aria-label="Chat" style="left:232px;top:730px;width:48px;height:48px"></button>
+   <button class="hs" data-go="profile" aria-label="Profile" style="left:300px;top:730px;width:48px;height:48px"></button>
+  </div>
+ </div></div>
+ <button class="restart" data-go="onb">Restart from onboarding</button>
+</div>
+<script>
+var NAV={home:1,notif:1,feed:1,chat:1,profile:1};
+var scr=document.getElementById('scr'),navhs=document.getElementById('navhs');
+function go(k){document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('on',v.id==='v-'+k)});
+ navhs.style.display=NAV[k]?'block':'none';var s=document.querySelector('#v-'+k+' .scroll');if(s)s.scrollTop=0;}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-go]');
+ if(b){go(b.getAttribute('data-go'));return}
+ if(scr.contains(e.target)){scr.classList.add('flash');setTimeout(function(){scr.classList.remove('flash')},450)}});
+(function(){var h=location.hash.slice(1);go(h&&document.getElementById('v-'+h)?h:'onb')})();
+</script>
+</body></html>
