@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Romario Muça — Product Designer</title>
-<meta name="description" content="Romario Muça, Milan-based Product Designer.">
+<meta name="description" content="Romario Muça, Milan-based designer. Brand, website and product design for startups, from logo to launch.">
 <meta name="theme-color" content="#0B0B0B">
 <link rel="preload" href="fonts/switzer-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/switzer-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -14,7 +14,7 @@
   @font-face{font-family:'Switzer';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/switzer-latin-600-normal.woff2') format('woff2')}
   :root{
     --bg:#0B0B0B; --fg:#FFFFFF; --mute:#8A8A8A; --mute2:#6F6F6F; --line:#2A2A2A; --ph:#151515;
-    --pink:#F4B6EA; --plum:#3A0D63; --plum2:#9563A8;
+    --paper:#FFFFFF; --ink:#0B0B0B; --ink-mute:#6B6B6B;
     --gut:8px;
     --font:'Switzer',"Helvetica Neue",Helvetica,Arial,sans-serif;
   }
@@ -24,7 +24,8 @@
   a{color:inherit;text-decoration:none}
   a:hover{opacity:.6}
   button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-  ::selection{background:var(--pink);color:var(--plum)}
+  ::selection{background:#FFFFFF;color:#0B0B0B}
+  .light ::selection,.pl ::selection{background:#0B0B0B;color:#FFFFFF}
   .g{color:var(--mute)}
 
   /* ── NAV ── */
@@ -38,14 +39,36 @@
   .view.on{display:block}
 
   /* ── HERO ── */
-  .hero{min-height:100vh;position:relative;padding:8px var(--gut) 40px;display:flex;flex-direction:column;justify-content:space-between;cursor:none}
-  .hero h1{font-weight:600;font-size:clamp(30px,3.95vw,64px);line-height:1.02;letter-spacing:-.035em;margin-left:8.4%;margin-right:12%;text-indent:7.5%}
-  .hero h1 .g{color:#7E7E7E;font-weight:500}
-  .hero h1 .emo{display:inline-block;transform:translateY(.04em)}
-  .hero .info{display:grid;grid-template-columns:1fr 1fr;gap:0 4%;margin-left:66%;margin-top:60px;font-size:15px;line-height:1.24;cursor:auto}
-  .hero .info .blk{margin-bottom:18px}
-  .hero .info span,.hero .info a{display:block}
-  #emailCursor{position:fixed;left:0;top:0;pointer-events:none;z-index:30;font-size:15px;white-space:nowrap;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s}
+  .hero{height:100vh;min-height:620px;display:flex;flex-direction:row;gap:0;position:relative}
+  .hp{position:relative;padding:8px var(--gut) 40px;display:flex;flex-direction:column;justify-content:space-between;transition:width .8s cubic-bezier(.2,.7,.2,1);overflow:hidden}
+  .pl{width:61.8%;background:#FFFFFF;color:#0B0B0B;border-bottom:1px solid #E5E5E5;cursor:none}
+  .pr{width:38.2%;background:#0B0B0B;color:#FFFFFF;cursor:none}
+  .hero:has(.pl:hover) .pl{width:66%} .hero:has(.pl:hover) .pr{width:34%}
+  .hero:has(.pr:hover) .pr{width:44%} .hero:has(.pr:hover) .pl{width:56%}
+  .htop{font-size:15px;line-height:1.24}
+  .htop span,.htop a{display:block}
+  .pl .htop{display:grid;grid-template-columns:1fr 1fr;gap:0 6%;margin-left:50%;padding-top:34px}
+  .pr .htop{padding-top:34px}
+  .pl .m{color:#6B6B6B} .pr .m{color:#8A8A8A}
+  .htop a:hover{opacity:.6}
+  .hbot{display:flex;flex-direction:column}
+  .ht{font-weight:600;font-size:clamp(48px,4.7vw,120px);letter-spacing:-.045em;line-height:.9;white-space:nowrap}
+  .ht .soon{color:#6E6E6E}
+  .hs{font-size:19px;line-height:1.3;margin-top:18px;min-height:3.9em}
+  .hs div{min-height:1.3em}
+  .pl .hs .m{color:#6B6B6B}
+  .seew{display:inline-block;margin-top:0;color:#0B0B0B;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+  .pr .hs .w{color:#FFFFFF}
+  .proj-row{color:#BDBDBD}
+  .proj-row .bl{filter:blur(3.5px);transition:filter .4s ease;user-select:none}
+  .pr:hover .proj-row .bl{filter:blur(2px)}
+  .proj-row .dot{color:#5A5A5A;filter:none}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  #soonCursor{position:fixed;left:0;top:0;z-index:30;pointer-events:none;background:#FFFFFF;color:#0B0B0B;font-size:15px;padding:1px 5px 2px;transform:translate(8px,8px) scale(.6);opacity:0;transition:opacity .18s,transform .18s}
+  #soonCursor.on{opacity:1;transform:translate(8px,8px) scale(1)}
+  .wintro{padding:120px var(--gut) 40px;font-size:19px;color:var(--mute);max-width:60ch}
+  @media (prefers-reduced-motion:reduce){.hp{transition:none}.hero:has(.pl:hover) .pl,.hero:has(.pr:hover) .pl{width:61.8%}.hero:has(.pl:hover) .pr,.hero:has(.pr:hover) .pr{width:38.2%}}
+  #emailCursor{position:fixed;left:0;top:0;pointer-events:none;z-index:30;font-size:15px;color:#0B0B0B;white-space:nowrap;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s}
   #emailCursor.on{opacity:1}
 
   /* ── WORKS ── */
@@ -58,7 +81,7 @@
   .cap{display:grid;grid-template-columns:1fr auto;padding:12px 8px 0;font-size:clamp(15px,1.2vw,19px);line-height:1.22}
   .cap .t{grid-column:1 / -1;color:var(--mute)}
   .cap .y{color:var(--mute);text-align:right}
-  #viewCursor{position:fixed;left:0;top:0;z-index:30;pointer-events:none;background:#F7A8EC;color:var(--plum);font-size:15px;padding:1px 4px 2px;transform:translate(8px,8px) scale(.6);opacity:0;transition:opacity .18s,transform .18s}
+  #viewCursor{position:fixed;left:0;top:0;z-index:30;pointer-events:none;background:#FFFFFF;color:#0B0B0B;font-size:15px;padding:1px 4px 2px;transform:translate(8px,8px) scale(.6);opacity:0;transition:opacity .18s,transform .18s}
   #viewCursor.on{opacity:1;transform:translate(8px,8px) scale(1)}
 
   /* ── SPLIT SECTIONS (wins / experience) ── */
@@ -73,28 +96,28 @@
   .item.nologo{grid-template-columns:1fr}
 
   /* ── PINK ZONE: ABOUT + FOOTER ── */
-  .pink{background:var(--pink);color:var(--plum)}
-  .pink a:hover{opacity:.55}
-  .pink .g{color:var(--plum2)}
+  .light{background:var(--paper);color:var(--ink)}
+  .light a:hover{opacity:.55}
+  .light .g{color:var(--ink-mute)}
   .about{position:relative;padding:14px var(--gut) 180px;display:grid;grid-template-columns:repeat(12,1fr);gap:0 var(--gut)}
-  .about .portrait{grid-column:11 / span 2;aspect-ratio:4/5;background:#E9A3DE;position:relative}
+  .about .portrait{grid-column:11 / span 2;aspect-ratio:4/5;background:#0B0B0B;position:relative}
   .about .portrait{overflow:hidden;background:#0B0B0B}
-  .about .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%;display:block}
+  .about .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%;display:block;filter:grayscale(1)}
   .about .txt{grid-column:3 / span 7;grid-row:1;padding-top:30vh}
   .about h2{font-weight:600;font-size:clamp(26px,3.2vw,52px);line-height:1.02;letter-spacing:-.035em;text-indent:12%;margin-bottom:40px}
-  .about .body{columns:2;column-gap:28px;color:var(--plum2);font-size:15px;line-height:1.26}
+  .about .body{columns:2;column-gap:28px;color:var(--ink-mute);font-size:15px;line-height:1.26}
   .about .body p{margin-bottom:10px;break-inside:avoid}
-  .about .body p.lead{color:var(--plum)}
+  .about .body p.lead{color:var(--ink)}
   .more{display:none}
   .more.open{display:block}
-  .rm{margin-top:18px;font-size:15px;color:var(--plum);text-decoration:underline;text-underline-offset:3px}
+  .rm{margin-top:18px;font-size:15px;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
   footer{padding:0 var(--gut) 10px}
   .fcols{display:grid;grid-template-columns:18% 18% 18% 1fr;font-size:clamp(15px,1.2vw,19px);line-height:1.22}
   .fcols span,.fcols a{display:block}
   .cta{margin-top:110px;display:block;font-weight:600;font-size:clamp(48px,10.6vw,190px);line-height:.92;letter-spacing:-.055em}
-  .mail{display:block;font-weight:500;font-size:clamp(28px,7.7vw,140px);line-height:1.02;letter-spacing:-.05em;color:var(--plum2);white-space:nowrap}
-  .mail:hover{color:var(--plum);opacity:1}
-  .fbot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:22px;font-size:clamp(13px,1vw,17px);color:var(--plum2)}
+  .mail{display:block;font-weight:500;font-size:clamp(28px,7.7vw,140px);line-height:1.02;letter-spacing:-.05em;color:var(--ink-mute);white-space:nowrap}
+  .mail:hover{color:var(--ink);opacity:1}
+  .fbot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:22px;font-size:clamp(13px,1vw,17px);color:var(--ink-mute)}
 
   /* ── PROJECT PAGE ── */
   .proj{padding:8px var(--gut) 0}
@@ -159,9 +182,14 @@
 
   /* ── MOBILE ── */
   @media (max-width:820px){
-    .hero{cursor:auto} #emailCursor{display:none}
-    .hero h1{margin:70px 0 0;text-indent:0;font-size:34px}
-    .hero .info{margin-left:0;grid-template-columns:1fr 1fr}
+    #emailCursor,#soonCursor{display:none}
+    .hero{flex-direction:column;height:auto;min-height:0}
+    .hp,.hero:has(.pl:hover) .pl,.hero:has(.pr:hover) .pl,.hero:has(.pl:hover) .pr,.hero:has(.pr:hover) .pr{width:100%;cursor:auto;transition:none}
+    .pl{min-height:75vh} .pr{min-height:60vh}
+    .pl .htop{order:2;margin:28px 0 0;padding-top:0}
+    .pl{justify-content:flex-end} .pl .hbot{padding-top:70px}
+    .ht{font-size:clamp(48px,13vw,72px)}
+    .hs{min-height:0}
     .works{grid-template-columns:1fr;gap:28px}
     .card{cursor:auto} #viewCursor{display:none}
     .split .col{margin-left:0}
@@ -191,25 +219,32 @@
 
 <div id="emailCursor">romario.muca@gmail.com</div>
 <div id="viewCursor">View</div>
+<div id="soonCursor">Soon</div>
 
 <!-- ════════════ HOME ════════════ -->
 <main class="view on" id="v-home">
 
   <section class="hero" id="hero">
-    <h1 class="rv">Hey <span class="emo">👋</span> I’m Romario, a Milan-based Product Designer. <span class="g">I turn complex tech into interfaces that feel obvious, and I’m happiest somewhere between design, code and a startup pitch.</span></h1>
-
-    <div class="info rv">
-      <div>
-        <div class="blk"><span class="g">Inquiries</span><a href="mailto:romario.muca@gmail.com">romario.muca@gmail.com</a><a href="tel:+393475073092">(+39) 347 507 3092</a></div>
-        <div class="blk"><span class="g">Capabilities</span><span>Product Design</span><span>UX/UI Design</span><span>Design Systems</span><span>AR Interfaces</span><span>UX Research</span><span>Brand Identity</span><span>AI Prototyping</span></div>
+    <div class="hp pl" id="hpl">
+      <div class="htop">
+        <div><span class="m">Capabilities</span><span>Brand Identity</span><span>Websites</span><span>Product Design</span><span>UX/UI Design</span><span>Design Systems</span><span>AI Prototyping</span></div>
+        <div><span class="m">Selected Clients</span><span>Devnut</span><a href="https://www.sensia.bio" target="_blank" rel="noopener">Sensia</a><span>HMDRIVE</span><span>DeepTree</span></div>
       </div>
-      <div>
-        <div class="blk"><span class="g">Social</span><a href="https://www.linkedin.com/in/romario-muca" target="_blank" rel="noopener">Linkedin</a><a href="#">Instagram</a><a href="#">Behance</a><a href="#">Read.cv</a></div>
-        <div class="blk"><span class="g">Selected Clients</span><span>Devnut</span><a href="https://www.sensia.bio" target="_blank" rel="noopener">Sensia</a><span>HMDRIVE</span><span>DeepTree</span></div>
+      <div class="hbot">
+        <div class="ht">Designer</div>
+        <div class="hs"><div>From logo to launch.</div><div class="m">Brand, website &amp; product design.</div><div><a class="seew" data-go="works" href="#">See works →</a></div></div>
+      </div>
+    </div>
+    <div class="hp pr" id="hpr">
+      <div class="htop"><span class="m">Building in public</span><a href="https://www.linkedin.com/in/romario-muca" target="_blank" rel="noopener">Follow the journey on LinkedIn ↗</a></div>
+      <div class="hbot">
+        <div class="ht">Founder<span class="soon">, soon.</span></div>
+        <div class="hs"><div class="w">Building in public.</div><div class="proj-row"><span class="sr">Four projects in progress, coming soon</span><span class="bl" aria-hidden="true">Shqipe</span> <span class="dot" aria-hidden="true">·</span> <span class="bl" aria-hidden="true">Percorso Cattedra</span> <span class="dot" aria-hidden="true">·</span> <span class="bl" aria-hidden="true">Ti Penso</span> <span class="dot" aria-hidden="true">·</span> <span class="bl" aria-hidden="true">Manualità</span></div><div></div></div>
       </div>
     </div>
   </section>
 
+  <p class="wintro rv">Hey 👋 I’m Romario, a Milan-based designer. I turn complex tech into interfaces that feel obvious.</p>
   <section class="works" id="works"></section>
 
   <section class="split">
@@ -232,7 +267,7 @@
     </div>
   </section>
 
-  <div class="pink">
+  <div class="light">
     <section class="about">
       <div class="portrait rv"><img src="img/portrait.webp" alt="Portrait of Romario Muça"></div>
       <div class="txt">
@@ -243,7 +278,7 @@
           <p>For the last three years I’ve freelanced with startups and software teams: researching with users, designing interfaces and building brands from scratch.</p>
           <div class="more" id="more">
             <p>Outside of work I do kick-boxing, for discipline, and card magic, for wonder. A good trick and a good interface have the same goal: hide the complexity and leave you with a moment that just makes sense.</p>
-            <p>Today I’m looking for a product team that moves at startup speed, where I can keep learning, ship often and grow next to people better than me.</p>
+            <p>Today I work with early-stage founders as a freelance designer, from logo to launch, while building my own projects on the side.</p>
           </div>
         </div>
         <button class="rm" id="rm">Read More</button>
@@ -388,10 +423,14 @@ document.querySelectorAll('.works .card').forEach((c,i)=>c.style.transitionDelay
 const ec=document.getElementById('emailCursor'),vc=document.getElementById('viewCursor'),hero=document.getElementById('hero');
 let mx=0,my=0;
 addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;ec.style.left=mx+'px';ec.style.top=my+'px';vc.style.left=mx+'px';vc.style.top=my+'px'},{passive:true});
-hero.addEventListener('mouseover',e=>{ec.classList.toggle('on',!e.target.closest('.info'))});
-hero.addEventListener('mouseleave',()=>ec.classList.remove('on'));
-hero.addEventListener('click',e=>{
-  if(e.target.closest('.info'))return;
+const hpl=document.getElementById('hpl'),hpr=document.getElementById('hpr'),sc=document.getElementById('soonCursor');
+addEventListener('mousemove',e=>{sc.style.left=e.clientX+'px';sc.style.top=e.clientY+'px'},{passive:true});
+hpl.addEventListener('mouseover',e=>{ec.classList.toggle('on',!e.target.closest('a,.htop'))});
+hpl.addEventListener('mouseleave',()=>ec.classList.remove('on'));
+hpr.addEventListener('mouseover',e=>{sc.classList.toggle('on',!e.target.closest('a'))});
+hpr.addEventListener('mouseleave',()=>sc.classList.remove('on'));
+hpl.addEventListener('click',e=>{
+  if(e.target.closest('a,.htop'))return;
   const done=()=>{ec.textContent='Copied to clipboard ✓';setTimeout(()=>ec.textContent='romario.muca@gmail.com',1400)};
   try{navigator.clipboard.writeText('romario.muca@gmail.com').then(done,()=>{})}catch(_){}
 });
