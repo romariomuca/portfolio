@@ -43,8 +43,6 @@
   .hp{position:relative;padding:8px var(--gut) 40px;display:flex;flex-direction:column;justify-content:space-between;transition:width .8s cubic-bezier(.2,.7,.2,1);overflow:hidden}
   .pl{width:61.8%;background:#FFFFFF;color:#0B0B0B;border-bottom:1px solid #E5E5E5;cursor:none}
   .pr{width:38.2%;background:#0B0B0B;color:#FFFFFF;cursor:none}
-  .hero:has(.pl:hover) .pl{width:66%} .hero:has(.pl:hover) .pr{width:34%}
-  .hero:has(.pr:hover) .pr{width:44%} .hero:has(.pr:hover) .pl{width:56%}
   .htop{font-size:15px;line-height:1.24}
   .htop span,.htop a{display:block}
   .pl .htop{display:grid;grid-template-columns:1fr 1fr;gap:0 6%;margin-left:50%;padding-top:34px}
@@ -60,8 +58,7 @@
   .seew{display:inline-block;margin-top:0;color:#0B0B0B;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
   .pr .hs .w{color:#FFFFFF}
   .proj-row{color:#BDBDBD}
-  .proj-row .bl{filter:blur(3.5px);transition:filter .4s ease;user-select:none}
-  .pr:hover .proj-row .bl{filter:blur(2px)}
+  .proj-row .bl{filter:blur(3.5px);user-select:none}
   .proj-row .dot{color:#5A5A5A;filter:none}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   #soonCursor{position:fixed;left:0;top:0;z-index:30;pointer-events:none;background:#FFFFFF;color:#0B0B0B;font-size:15px;padding:1px 5px 2px;transform:translate(8px,8px) scale(.6);opacity:0;transition:opacity .18s,transform .18s}
@@ -318,6 +315,9 @@
 
 <script>
 const P=[
+ {id:'deeptree',name:'DeepTree',disc:'UX/UI Designer',year:'2024 – 2025',country:'Italy',tag:'M&A, minus the gatekeeping.',
+  head:'Mergers and acquisitions usually belong to big players with big advisors. DeepTree uses AI to open those opportunities to small and medium Italian businesses.',
+  text:['DeepTree is a platform that helps SMEs discover and evaluate M&A opportunities with the help of AI. The domain is dense, the stakes are high, and most users are not finance experts.','I designed the user experience end to end, with a focus on information architecture and user flows, so that a complex process feels guided and understandable step by step.']},
  {id:'rtr',name:'Riding the Rainbow',disc:'UX/UI Designer · App Redesign',year:'2026',country:'Luxembourg',tag:'Neighbours helping neighbours, redesigned.',
   cover:'img/rtr-cover.webp',preview:['img/rtr-cover.webp','img/rtr-p-home.webp','img/rtr-p-map.webp','img/rtr-p-messages.webp'],url:'https://portfolio-iphone-eyephone.vercel.app',
   head:'Riding the Rainbow started as an app for donating pre-loved items. The goal of the redesign: turn it into Luxembourg’s solidarity hub, where neighbours share items, time, skills and events.',
